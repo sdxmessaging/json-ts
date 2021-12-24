@@ -1,6 +1,6 @@
 {
   "name": "@sdxmessaging/json-ts",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Export json objects from TypeScript files",
   "repository": {
     "type": "git",
