@@ -75,13 +75,6 @@ const processArray: ReadonlyArray<IProcess> = [
 		errMsg: "Publish failed, could not pull changes json-ts. See logs for more details",
 		executeMsg: "Pulling changes on json-ts..."
 	},
-	// Test
-	{
-		execute: () => shell.exec("npm run test"),
-		rollback: () => null,
-		errMsg: "Publish failed, could not pull changes json-ts. See logs for more details",
-		executeMsg: "Running tests on json-ts..."
-	},
 	// Version (+git tag)
 	{
 		execute: (version: string) => shell.exec(`npm version ${version}`),
