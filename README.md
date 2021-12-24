@@ -2,6 +2,20 @@
 
 Export json objects from TypeScript files
 
+## Installation
+
+Register the GitHub Package Registry for @sdxmessaging in your .npmrc file:
+
+```text
+@sdxmessaging:registry=https://npm.pkg.github.com
+```
+
+Add @sdxmessaging/json-ts to your package:
+
+```bash
+npm i @sdxmessaging/json-ts
+```
+
 ## Motivation
 
 At SDX we find TypeScript interfaces, strict compiler options, and plenty of linter rules go a long way to catching bugs around compile time.
