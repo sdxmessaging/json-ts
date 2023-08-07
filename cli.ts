@@ -1,13 +1,13 @@
 import { mkdirSync, writeFileSync } from "fs";
 import { dirname, basename, relative, resolve } from "path";
 import { Command } from "commander";
-import glob from "glob";
+import { glob } from "glob";
 
 interface ICliOpts {
 	readonly source: string;
 	readonly output: string;
 	readonly pattern: string;
-	readonly ignore: string | ReadonlyArray<string>;
+	readonly ignore: string | string[];
 }
 
 const program = new Command();
@@ -17,6 +17,7 @@ program
 	.option("-o, --output <path>", "Output directory")
 	.option("-p, --pattern <glob>", "Match pattern")
 	.option("-i, --ignore <globs...>", "Ignore pattern");
+
 program.parse(process.argv);
 const subDir = program.args.shift();
 const {
@@ -55,11 +56,10 @@ async function exportFile(filePath: string) {
 	console.debug("✔", srcPath, "→", relative(outDir, outPath));
 }
 
-glob(resolve(srcDir, pattern), { ignore }, async function (err, files) {
-	if (err) {
-		console.debug(err);
-		return;
-	}
+glob(
+	resolve(srcDir, pattern),
+	{ ignore }
+).then(async function (files) {
 	console.debug(srcDir);
 	console.debug(`Exporting ${files.length} files...`);
 	for (const filePath of files) {
@@ -70,5 +70,10 @@ glob(resolve(srcDir, pattern), { ignore }, async function (err, files) {
 			console.error(err);
 			break;
 		}
+	}
+}, function (err) {
+	if (err) {
+		console.debug(err);
+		return;
 	}
 });
