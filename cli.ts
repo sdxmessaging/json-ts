@@ -42,7 +42,7 @@ async function exportFile(filePath: string) {
 		// Resolve path to output directory
 		dirname(resolve(outDir, srcPath)),
 		// Rename file from .ts to .xml
-		`${basename(filePath, ".ts")}.json`
+		`${basename(filePath, ".ts").replace(".json", "")}.json`
 	);
 	// Import file and assert format
 	const content = await import(filePath);
