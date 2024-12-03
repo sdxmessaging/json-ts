@@ -14,7 +14,8 @@
   "bugs": "https://github.com/sdxmessaging/json-ts/issues",
   "license": "MIT",
   "bin": {
-    "json-ts": "./bin/index.js"
+    "json-ts": "./bin/index.js",
+    "json-ts-next": "./bin/index-next.js"
   },
   "dependencies": {
     "commander": "11.0.0",
